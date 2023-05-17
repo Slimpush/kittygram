@@ -1,0 +1,5 @@
+IP: 158.160.64.54;
+name_taski: https://sytesda.sytes.net/;
+name_kittygram: https://kittygram.viewdns.net/;
+login: y(for taski), CatLord(for kittygramm);
+password: SabakaBarabaka(for all);

@@ -1,0 +1,82 @@
+server {
+    server_name 158.160.64.54 sytesda.sytes.net;
+
+    location /admin/ {
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location / {
+        root   /var/www/taski;
+        index  index.html index.htm;
+        try_files $uri /index.html;
+    }
+
+
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/sytesda.sytes.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/sytesda.sytes.net/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+}
+
+server {
+    if ($host = sytesda.sytes.net) {
+        return 301 https://$host$request_uri;
+    }
+
+
+    listen 80;
+    server_name 158.160.64.54 sytesda.sytes.net;
+    return 404;
+
+
+}
+
+server {
+    server_name 158.160.64.54 kittygram.viewdns.net;
+
+
+    location /admin/ {
+        proxy_pass http://127.0.0.1:8080;
+    }
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8080;
+    }
+
+    location /media/ {
+    alias /path/to/kittygram/media/;
+    }
+
+    location / {
+        root   /var/www/kittygram/;
+        index  index.html index.htm;
+        try_files $uri /index.html;
+    }
+
+    
+
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/kittygram.viewdns.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/kittygram.viewdns.net/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+}
+
+server {
+    if ($host = kittygram.viewdns.net) {
+        return 301 https://$host$request_uri;
+    }
+
+    listen 80;
+    server_name 158.160.64.54 kittygram.viewdns.net;
+    return 404;
+
+
+}
