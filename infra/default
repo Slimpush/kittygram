@@ -1,5 +1,5 @@
 server {
-    server_name 158.160.64.54 sytesda.sytes.net;
+    server_name sytesda.sytes.net;
 
     location /admin/ {
         proxy_pass http://127.0.0.1:8000;
@@ -31,14 +31,14 @@ server {
 
 
     listen 80;
-    server_name 158.160.64.54 sytesda.sytes.net;
+    server_name sytesda.sytes.net;
     return 404;
 
 
 }
 
 server {
-    server_name 158.160.64.54 kittygram.viewdns.net;
+    server_name  kittygram.viewdns.net;
 
 
     location /admin/ {
@@ -50,16 +50,16 @@ server {
     }
 
     location /media/ {
-    alias /path/to/kittygram/media/;
+        alias /var/www/kittygram/media/;
     }
 
     location / {
-        root   /var/www/kittygram/;
+        root   /var/www/kittygram;
         index  index.html index.htm;
         try_files $uri /index.html;
     }
 
-    
+
 
     listen 443 ssl;
     ssl_certificate /etc/letsencrypt/live/kittygram.viewdns.net/fullchain.pem;
@@ -75,7 +75,7 @@ server {
     }
 
     listen 80;
-    server_name 158.160.64.54 kittygram.viewdns.net;
+    server_name kittygram.viewdns.net;
     return 404;
 
 
