@@ -10,7 +10,8 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = bool(strtobool(os.getenv('DEBUG')))
+DEBUG_ENV = os.getenv('DEBUG')
+DEBUG = bool(strtobool(DEBUG_ENV)) if DEBUG_ENV is not None else False
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS') 
 
