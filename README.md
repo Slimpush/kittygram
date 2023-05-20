@@ -79,13 +79,13 @@
  - перезагрузить Nginx `sudo systemctl reload nginx`
  - добавить блоки location для перенаправления
 
- ```
- 	    location /api/ {
+```
+            location /api/ {
 	        proxy_pass http://127.0.0.1:8080;
 	    }
 	        
-           location /admin/ {
-		proxy_pass http://127.0.0.1:8000;
+            location /admin/ {
+	        proxy_pass http://127.0.0.1:8000;
             }
 ```
 - сохранить изменения, проверить на ошибки и перезагрузить конфигурацию Nginx.
